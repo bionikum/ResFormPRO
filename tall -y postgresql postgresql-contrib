@@ -1,0 +1,8 @@
+[0;1;32m●[0m postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (]8;;file://6405993-ll120017.twc1.net/usr/lib/systemd/system/postgresql.service/usr/lib/systemd/system/postgresql.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (exited)[0m since Thu 2026-02-05 11:31:23 UTC; 24h ago
+   Main PID: 762 (code=exited, status=0/SUCCESS)
+        CPU: 3ms
+
+Feb 05 11:31:23 6405993-ll120017.twc1.net systemd[1]: Starting postgresql.service - PostgreSQL RDBMS...
+Feb 05 11:31:23 6405993-ll120017.twc1.net systemd[1]: Finished postgresql.service - PostgreSQL RDBMS.

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест навигационной панели</title>
+    <style>
+        body { padding: 20px; }
+        .test-box { 
+            margin: 20px 0; 
+            padding: 20px; 
+            border: 2px dashed #ccc; 
+            border-radius: 10px;
+        }
+        .color-sample {
+            width: 50px; 
+            height: 50px; 
+            display: inline-block; 
+            margin: 5px; 
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест цветовой схемы</h1>
+    
+    <div class="test-box">
+        <h3>Цвета бренда:</h3>
+        <div class="color-sample" style="background-color: #81C784;" title="primary-green">#81C784</div>
+        <div class="color-sample" style="background-color: #A5D6A7;" title="secondary-green">#A5D6A7</div>
+        <div class="color-sample" style="background-color: #C8E6C9;" title="light-green">#C8E6C9</div>
+        <div class="color-sample" style="background-color: #66BB6A;" title="dark-green">#66BB6A</div>
+        <div class="color-sample" style="background-color: #4CAF50;" title="accent-green">#4CAF50</div>
+        <div class="color-sample" style="background-color: #ffffff; border: 2px solid #000;" title="white">#FFFFFF</div>
+    </div>
+    
+    <div class="test-box">
+        <h3>Навигационная панель должна быть:</h3>
+        <ul>
+            <li>Фон: белый (#FFFFFF)</li>
+            <li>Рамка снизу: 3px solid #4CAF50</li>
+            <li>Тень: легкая серая</li>
+            <li>Логотип: на белом фоне с padding</li>
+            <li>Текст: темно-зеленый или серый</li>
+        </ul>
+    </div>
+    
+    <div class="test-box">
+        <h3>Проверка контрастности:</h3>
+        <p style="background-color: white; color: #4CAF50; padding: 10px;">
+            Зеленый текст на белом фоне ✓
+        </p>
+        <p style="background-color: #4CAF50; color: white; padding: 10px;">
+            Белый текст на зеленом фоне ✓
+        </p>
+    </div>
+    
+    <p><a href="/">Вернуться на главную</a></p>
+</body>
+</html>
