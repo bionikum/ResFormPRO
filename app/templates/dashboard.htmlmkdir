@@ -1,0 +1,52 @@
+nano app/templates/dashboard.html
+{% extends "base.html" %}
+
+{% block title %}Панель управления - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Боковое меню -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <!-- ... код меню ... -->
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!-- Заголовок -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Панель управления</h1>
+            </div>
+
+            <!-- Карточки статистики -->
+            <div class="row">
+                <!-- ... 4 карточки ... -->
+            </div>
+
+            <!-- История анализов -->
+            <div class="row mt-4" id="analyses-history">
+                <!-- ... таблица ... -->
+            </div>
+
+            <!-- График прогресса -->
+            <div class="row mt-4" id="progress">
+                <!-- ... график ... -->
+            </div>
+
+            <!-- Рекомендации -->
+            <div class="row mt-4" id="recommendations">
+                <!-- ... рекомендации ... -->
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- В конце добавить JavaScript и стили -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Код JavaScript для графика
+</script>
+<style>
+/* Стили для sidebar и других элементов */
+</style>
+{% endblock %}

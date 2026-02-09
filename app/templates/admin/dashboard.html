@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}Админ-панель - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0"><i class="fas fa-cog me-2"></i>Административная панель</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="text-success">Добро пожаловать, Администратор!</h5>
+        <p>Управление системой ResFormPRO</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-primary">3</h2>
+                        <p class="mb-0">Пользователей</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-success">0</h2>
+                        <p class="mb-0">Анализов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-warning">1</h2>
+                        <p class="mb-0">Специалистов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-info">1</h2>
+                        <p class="mb-0">Админов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h6>Функции администратора:</h6>
+            <ul>
+                <li>Управление пользователями</li>
+                <li>Назначение ролей</li>
+                <li>Просмотр статистики</li>
+                <li>Управление подписками</li>
+                <li>Настройки системы</li>
+            </ul>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex mt-4">
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>На главную
+            </a>
+            <button class="btn btn-success ms-auto" disabled>
+                <i class="fas fa-users me-2"></i>Управление пользователями (скоро)
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

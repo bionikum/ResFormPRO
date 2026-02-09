@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Загрузка фотографий для анализа</h2>
+    <p class="text-muted">
+        Для точного анализа необходимо загрузить фотографии в 5 ракурсах.
+        Минимально требуется 1 фотография.
+    </p>
+    
+    <form method="POST" action="{{ url_for('analysis.upload') }}" enctype="multipart/form-data" id="uploadForm">
+        <div class="row">
+            <!-- Тело спереди -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Тело спереди
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="preview-container mb-2">
+                            <img id="frontPreview" src="#" alt="Preview" class="img-fluid d-none" style="max-height: 200px;">
+                        </div>
+                        <input type="file" name="front_image" class="form-control" 
+                               accept="image/*" 
+                               onchange="previewImage(this, 'frontPreview')">
+                        <small class="text-muted">Обязательно</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Тело сбоку -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Тело сбоку
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="preview-container mb-2">
+                            <img id="sidePreview" src="#" alt="Preview" class="img-fluid d-none" style="max-height: 200px;">
+                        </div>
+                        <input type="file" name="side_image" class="form-control" 
+                               accept="image/*"
+                               onchange="previewImage(this, 'sidePreview')">
+                        <small class="text-muted">Обязательно</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Тело сзади -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        Тело сзади
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="preview-container mb-2">
+                            <img id="backPreview" src="#" alt="Preview" class="img-fluid d-none" style="max-height: 200px;">
+                        </div>
+                        <input type="file" name="back_image" class="form-control" 
+                               accept="image/*"
+                               onchange="previewImage(this, 'backPreview')">
+                        <small class="text-muted">Обязательно</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лицо спереди -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Лицо спереди
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="preview-container mb-2">
+                            <img id="facePreview" src="#" alt="Preview" class="img-fluid d-none" style="max-height: 200px;">
+                        </div>
+                        <input type="file" name="face_image" class="form-control" 
+                               accept="image/*"
+                               onchange="previewImage(this, 'facePreview')">
+                        <small class="text-muted">Дополнительно</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лицо сбоку -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Лицо сбоку
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="preview-container mb-2">
+                            <img id="faceSidePreview" src="#" alt="Preview" class="img-fluid d-none" style="max-height: 200px;">
+                        </div>
+                        <input type="file" name="face_side_image" class="form-control" 
+                               accept="image/*"
+                               onchange="previewImage(this, 'faceSidePreview')">
+                        <small class="text-muted">Дополнительно</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success btn-lg">
+                <i class="fas fa-play-circle"></i> Начать анализ
+            </button>
+            <button type="button" class="btn btn-outline-secondary" onclick="clearAll()">
+                <i class="fas fa-trash"></i> Очистить все
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+function previewImage(input, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = input.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.classList.remove('d-none');
+        }
+        
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "#";
+        preview.classList.add('d-none');
+    }
+}
+
+function clearAll() {
+    // Очищаем все превью
+    ['frontPreview', 'sidePreview', 'backPreview', 'facePreview', 'faceSidePreview']
+        .forEach(id => {
+            const img = document.getElementById(id);
+            img.src = '#';
+            img.classList.add('d-none');
+        });
+    
+    // Очищаем все input файлы
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.value = '';
+    });
+}
+
+// Валидация формы
+document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    const files = document.querySelectorAll('input[type="file"]');
+    let hasFile = false;
+    
+    files.forEach(input => {
+        if (input.files.length > 0) {
+            hasFile = true;
+        }
+    });
+    
+    if (!hasFile) {
+        e.preventDefault();
+        alert('Пожалуйста, загрузите хотя бы одну фотографию.');
+        return false;
+    }
+    
+    return true;
+});
+</script>
+
+<style>
+.preview-container {
+    min-height: 150px;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+</style>
+{% endblock %}

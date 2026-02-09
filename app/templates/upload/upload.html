@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Загрузка фотографий - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Загрузка фотографий для анализа</h1>
+            <p class="text-muted">Загрузите фотографии для анализа осанки и симметрии</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-camera"></i> Форма загрузки</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Функция загрузки фотографий будет доступна в следующем обновлении.</p>
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-success">
+                        <i class="bi bi-arrow-left"></i> Вернуться на панель управления
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

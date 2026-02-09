@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}Кабинет специалиста - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-warning text-dark">
+        <h4 class="mb-0"><i class="fas fa-user-md me-2"></i>Кабинет специалиста</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="text-success">Добро пожаловать, кинезиолог!</h5>
+        <p>Вы можете добавлять и редактировать рекомендации для пользователей</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-primary">0</h2>
+                        <p class="mb-0">Ожидают анализа</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-success">0</h2>
+                        <p class="mb-0">Добавлено рекомендаций</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="text-info">0</h2>
+                        <p class="mb-0">Активных пользователей</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h6>Функции специалиста:</h6>
+            <ul>
+                <li>Просмотр анализов пользователей</li>
+                <li>Добавление рекомендаций и упражнений</li>
+                <li>Создание программ коррекции</li>
+                <li>Консультации пользователей</li>
+            </ul>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex mt-4">
+            <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>На главную
+            </a>
+            <button class="btn btn-success ms-auto" disabled>
+                <i class="fas fa-plus me-2"></i>Добавить рекомендацию (скоро)
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

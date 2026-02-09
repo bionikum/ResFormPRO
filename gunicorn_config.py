@@ -1,0 +1,9 @@
+bind = "127.0.0.1:5000"
+workers = 3
+worker_class = "sync"
+worker_connections = 1000
+timeout = 30
+keepalive = 2
+errorlog = "/var/www/ResFormPRO/logs/gunicorn_error.log"
+accesslog = "/var/www/ResFormPRO/logs/gunicorn_access.log"
+loglevel = "info"

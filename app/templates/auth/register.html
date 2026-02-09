@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header text-center py-3">
+                    <h4 class="mb-0 text-dark">
+                        <i class="bi bi-person-plus-fill me-2"></i>Регистрация в системе
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Логотип -->
+                    <div class="text-center mb-4">
+                        <div class="logo-container d-inline-block p-3 mb-3">
+                            <img src="{{ url_for('static', filename='images/logos/logo.png') }}?v={{ logo_version }}" 
+                                 alt="Логотип Школы Ресурс" 
+                                 style="max-height: 60px;">
+                        </div>
+                        <h3 class="text-dark mb-2">Создание аккаунта</h3>
+                        <p class="text-muted mb-0">Заполните форму для регистрации в ResFormPRO</p>
+                    </div>
+
+                    <!-- Форма регистрации -->
+                    <form method="POST" action="{{ url_for('auth.register') }}" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="first_name" class="form-label fw-semibold">
+                                    <i class="bi bi-person me-1"></i>Имя
+                                </label>
+                                {{ form.first_name(class="form-control", id="first_name", 
+                                                  placeholder="Введите ваше имя",
+                                                  required=true) }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.first_name.errors %}
+                                            <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label for="last_name" class="form-label fw-semibold">
+                                    <i class="bi bi-person me-1"></i>Фамилия
+                                </label>
+                                {{ form.last_name(class="form-control", id="last_name", 
+                                                 placeholder="Введите вашу фамилию",
+                                                 required=true) }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.last_name.errors %}
+                                            <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">
+                                <i class="bi bi-envelope me-1"></i>Email адрес
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-at"></i>
+                                </span>
+                                {{ form.email(class="form-control", id="email", 
+                                              placeholder="example@email.com",
+                                              required=true) }}
+                            </div>
+                            <small class="text-muted">На этот email будут приходить уведомления</small>
+                            {% if form.email.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.email.errors %}
+                                        <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-semibold">
+                                <i class="bi bi-key me-1"></i>Пароль
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                {{ form.password(class="form-control", id="password", 
+                                                placeholder="Не менее 6 символов",
+                                                required=true) }}
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <small class="text-muted">Пароль должен содержать буквы и цифры</small>
+                            {% if form.password.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.password.errors %}
+                                        <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="confirm_password" class="form-label fw-semibold">
+                                <i class="bi bi-key-fill me-1"></i>Подтверждение пароля
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                                {{ form.confirm_password(class="form-control", id="confirm_password", 
+                                                        placeholder="Повторите пароль",
+                                                        required=true) }}
+                            </div>
+                            {% if form.confirm_password.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.confirm_password.errors %}
+                                        <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid gap-2 mb-4">
+                            {{ form.submit(class="btn btn-success btn-lg fw-semibold py-2") }}
+                        </div>
+
+                        <!-- Ссылки -->
+                        <div class="text-center">
+                            <p class="mb-0">
+                                Уже есть аккаунт? 
+                                <a href="{{ url_for('auth.login') }}" class="text-decoration-none fw-semibold">
+                                    Войдите здесь
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Информация о системе -->
+            <div class="mt-4 p-3 bg-light rounded border">
+                <h6 class="mb-2 text-dark">
+                    <i class="bi bi-info-circle me-1"></i>О системе ResFormPRO
+                </h6>
+                <ul class="mb-0 ps-3">
+                    <li><small>Анализ осанки по 5 фотографиям</small></li>
+                    <li><small>ИИ анализ физических отклонений</small></li>
+                    <li><small>Рекомендации от кинезиологов школы "Ресурс"</small></li>
+                    <li><small>Отслеживание прогресса коррекции</small></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Переключение видимости пароля
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password');
+        const icon = this.querySelector('i');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.className = 'bi bi-eye-slash';
+        } else {
+            passwordInput.type = 'password';
+            icon.className = 'bi bi-eye';
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,152 @@
+/* Основные цвета бренда */
+:root {
+    --primary-green: #81C784;
+    --secondary-green: #A5D6A7;
+    --light-green: #C8E6C9;
+    --dark-green: #66BB6A;
+    --accent-green: #4CAF50;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+}
+
+/* Навигационная панель - БЕЛАЯ с зеленой рамкой */
+.navbar {
+    background-color: var(--white) !important;
+    border-bottom: 3px solid var(--accent-green) !important;
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1) !important;
+}
+
+/* Логотип в навигации */
+.navbar-brand img {
+    max-height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
+    padding: 3px;
+    background-color: var(--white);
+    border-radius: 4px;
+}
+
+/* Текст в навигации */
+.navbar-brand span {
+    color: var(--accent-green) !important;
+    font-weight: 700;
+}
+
+.navbar-brand small {
+    color: #666 !important;
+    font-size: 0.85rem;
+}
+
+/* Ссылки в навигации */
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+    color: var(--accent-green) !important;
+}
+
+/* Активная ссылка */
+.nav-link.active {
+    color: var(--accent-green) !important;
+    font-weight: 600;
+}
+
+/* Dropdown меню */
+.dropdown-menu {
+    border: 1px solid var(--light-green);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+    min-width: 200px;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-green);
+    color: var(--accent-green);
+}
+
+/* Иконки в навигации */
+.nav-link i, .dropdown-item i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+/* Футер */
+footer {
+    background-color: var(--white) !important;
+    border-top: 3px solid var(--secondary-green) !important;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+footer a {
+    color: var(--accent-green) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--dark-green) !important;
+    text-decoration: underline;
+}
+
+/* Стили для страницы входа */
+.login-logo {
+    max-width: 200px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-gray);
+    color: #333;
+}
+
+/* Карточки */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: var(--accent-green);
+    border-color: var(--dark-green);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-green);
+    border-color: var(--accent-green);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .navbar-brand span {
+        font-size: 1rem;
+    }
+    
+    .navbar-brand small {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 0.5rem !important;
+    }
+}

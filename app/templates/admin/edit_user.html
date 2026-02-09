@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование пользователя - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-0"><i class="bi bi-person-gear"></i> Редактирование пользователя</h1>
+            <p class="text-muted">Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-pencil"></i> Форма редактирования</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name or '' }}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Фамилия</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name or '' }}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Роль</label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="user" {% if user.role == 'user' %}selected{% endif %}>Пользователь</option>
+                                <option value="specialist" {% if user.role == 'specialist' %}selected{% endif %}>Специалист</option>
+                                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Администратор</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Новый пароль (оставьте пустым чтобы не менять)</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                            <a href="{{ url_for('admin.manage_users') }}" class="btn btn-outline-secondary">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - ResFormPRO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Профиль пользователя</h1>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-person-circle"></i> Информация</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                    <p><strong>Роль:</strong> 
+                        {% if current_user.is_admin() %}
+                        <span class="badge bg-danger">Администратор</span>
+                        {% elif current_user.is_specialist() %}
+                        <span class="badge bg-warning">Специалист</span>
+                        {% else %}
+                        <span class="badge bg-success">Пользователь</span>
+                        {% endif %}
+                    </p>
+                    <p><strong>Дата регистрации:</strong> 
+                        {{ current_user.created_date.strftime('%d.%m.%Y') if current_user.created_date else 'Неизвестно' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Настройки</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Настройки профиля будут доступны в следующем обновлении.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
